@@ -19,6 +19,7 @@ import kr.or.iei.FileUtils;
 import kr.or.iei.admin.model.service.AdminService;
 import kr.or.iei.hospital.model.dto.Hospital;
 import kr.or.iei.hospital.model.dto.PrescriptionFile;
+import kr.or.iei.hospital.model.dto.Time;
 import kr.or.iei.hospital.model.service.HospitalService;
 import kr.or.iei.member.model.dto.Member;
 import kr.or.iei.member.model.service.MemberService;
@@ -94,6 +95,14 @@ public class ServiceController {
 		h.setHospitalName(hospitalName);
 		model.addAttribute("h", h);
 		return "service/reserveContactFrm";
+	}
+	
+//	여기 수정중
+	@ResponseBody
+	@GetMapping(value="/searchReservation")
+	public Time searchReservation(int hospitalNo) {
+		Time time = hospitalService.searchHospitalTime(hospitalNo);
+		return time;
 	}
 	
 	@ResponseBody

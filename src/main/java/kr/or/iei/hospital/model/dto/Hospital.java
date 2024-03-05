@@ -26,7 +26,7 @@ public class Hospital {
 	private String costOne;
 	private String costTwo;
 	private int reviewCount;
-	private int ratingAvg;
+	private double ratingAvg;
 	private String openStatus;
 	private List subjectList;
 	private List keywordList;

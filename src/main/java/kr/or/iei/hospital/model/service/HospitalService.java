@@ -119,7 +119,11 @@ public class HospitalService {
 		h.setDoctorList(doctorList);
 		return h;
 	}
-
+	
+	public Time searchHospitalTime(int hospitalNo) {
+		Time time = hospitalDao.searchHospitalTime(hospitalNo);
+		return time;
+	}
 
 	public Hospital selectHospital(int memberNo) {
 		Hospital hospital = new Hospital();

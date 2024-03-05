@@ -153,13 +153,29 @@
             const day =  $("#datepicker").datepicker("getDate").getDay();
             $(".time_wrap .item_title").show();
             $(".no_data_wrap").hide();
-            if(day == 0 || day == 6){
-                //주말 선택
-                timeSetting(weekendHour, day, dpDate);
-            }else{
-                //평일 선택
-                timeSetting(dayHour, day, dpDate);
-            }
+
+            //시간 구해오기 ajax
+            const hospitalNo = [[${h.hospitalNo}]];
+            $.ajax({
+                url: "/service/searchReservation",
+                type: "GET",
+                dataType: "JSON",
+                data: {hospitalNo: hospitalNo},
+                success: function(data){
+                    console.log(data);
+
+                    if(day == 0 || day == 6){
+                        //주말 선택
+                        timeSetting(weekendHour, day, dpDate);
+                    }else{
+                        //평일 선택
+                        timeSetting(dayHour, day, dpDate);
+                    }
+                },
+                error: function(){ 
+                    console.log("에러에러");
+                }
+            })
         }
 
         //평일/주말 선택시 타임테이블 뿌려주기
@@ -175,7 +191,7 @@
             const timeEndMinutes = Number(timeEndArr[1]);
             let timeArr = [];
 
-            //진료시간(시) 배열 - 30분 단위이므로 2개씩 넣기[9,9,10,10 ... 17,17,18,18]
+            //진료시간(시) 배열 - 30분 단위니까 2개씩 넣기[9,9,10,10 ... 17,17,18,18]
             //영업시간 1시간 전까지만 예약 가능
             for(let i=timeStartHour;i<timeEndHour;i++){
                 for(let j=0;j<2;j++){

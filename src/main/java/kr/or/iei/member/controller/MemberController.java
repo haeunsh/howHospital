@@ -470,7 +470,7 @@ public class MemberController {
 		
 		
 		// 파일 저장 경로 설정
-	    String savepath = root + "/reservation/review";
+	    String savepath = root + "/reservation/review/";
 
 	    
 	    
