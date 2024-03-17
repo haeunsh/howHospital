@@ -271,6 +271,12 @@ public class HospitalService {
 		int myReviewCount = hospitalDao.selectMyReviewCount(memberNo, hospitalNo);
 		return myReviewCount;
 	}
+
+
+	public List searchReservation(int hospitalNo, String selectedDate, int subjectNo) {
+		List timeResInfo = hospitalDao.searchReservation(hospitalNo, selectedDate, subjectNo);
+		return timeResInfo;
+	}
 	
 }
 

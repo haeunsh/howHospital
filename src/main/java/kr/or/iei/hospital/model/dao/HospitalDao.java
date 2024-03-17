@@ -26,6 +26,7 @@ import kr.or.iei.hospital.model.dto.TimeRowMapper;
 import kr.or.iei.member.model.dto.MemberRowMapper;
 import kr.or.iei.member.model.dto.MyHospitalReviewRowMapper;
 import kr.or.iei.member.model.dto.MyReviewRowMapper;
+import kr.or.iei.reservation.model.dto.ResTimeBySubjectRowMapper;
 
 
 
@@ -61,6 +62,8 @@ public class HospitalDao {
 	private MemberRowMapper memberRowMapper;
 	@Autowired
 	private MyHospitalReviewRowMapper myHospitalReviewRowMapper;
+	@Autowired
+	private ResTimeBySubjectRowMapper resTimeBySubjectRowMapper;
 	
 	
 	public List searchHospital(String keyword) {	
@@ -425,6 +428,13 @@ public class HospitalDao {
 		Object[] params = {memberNo, hospitalNo};
 		int result = jdbc.queryForObject(query, Integer.class, params);
 		return result;
+	}
+
+	public List searchReservation(int hospitalNo, String selectedDate, int subjectNo) {
+		String query = "select substr(reservation_time,instr(reservation_time,' ',1,1)+1) time from reservation_tbl r where hospital_no=? and reservation_time like ?||'%'  and reservation_status=3 and reservation_no in(select reservation_no from reservation_detail_tbl where subject_no=?)";
+		Object[] params = {hospitalNo, selectedDate, subjectNo};
+		List timeResInfo = jdbc.query(query, resTimeBySubjectRowMapper, params);
+		return timeResInfo;
 	}
 	
 	

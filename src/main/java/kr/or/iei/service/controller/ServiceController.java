@@ -100,9 +100,9 @@ public class ServiceController {
 //	여기 수정중
 	@ResponseBody
 	@GetMapping(value="/searchReservation")
-	public Time searchReservation(int hospitalNo) {
-		Time time = hospitalService.searchHospitalTime(hospitalNo);
-		return time;
+	public List searchReservation(int hospitalNo, String selectedDate, int subjectNo) {
+		List timeResInfo = hospitalService.searchReservation(hospitalNo, selectedDate, subjectNo);
+		return timeResInfo;
 	}
 	
 	@ResponseBody
