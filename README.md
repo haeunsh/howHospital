@@ -7,6 +7,7 @@
 2024.02.08 ~ 2024.02.29(3주)
 
 ## 팀원 소개
+![팀소개이미지](https://github.com/haeunsh/howHospital/commit/6e8cc747b50736db26ed2dca417c260ada0b9649)
 
 ## 개발 목표 및 설계 주안점
 
