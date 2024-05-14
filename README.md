@@ -17,13 +17,13 @@
 - **언어**: Java 21
 - **프레임워크**: Spring Boot
 - **데이터베이스**: Oracle 11g
-- **통합 개발 환경(IDE)**: STS (Spring Tool Suite)
+- **통합 개발 환경(IDE)**: STS
 - **빌드 도구**: Apache Maven 3.9.6
 
 ### 프론트엔드
 - **언어 및 마크업**: HTML, CSS, JavaScript
 - **라이브러리**: jQuery, Ajax, Thymeleaf
-- **통합 개발 환경(IDE)**: VSCode (Visual Studio Code)
+- **통합 개발 환경(IDE)**: VSCode
 
 ### 협업 도구
 - **버전 관리**: GitHub
